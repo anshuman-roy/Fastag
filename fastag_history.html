@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FASTag Transaction History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 10px;
+            padding: 10px;
+            background-color: #f8f9fa;
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f06321;
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            z-index: 1000;
+            height: 40px;
+        }
+        .top-bar img {
+            height: 70px;
+            margin-right: 10px;
+            margin-bottom: 0px; /* Space between logo and text */
+            
+        }
+        .top-bar-text {
+            font-size: 23px;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 800px;
+            width: 90%;
+            margin: auto;
+            margin-top: 50px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .car-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .car-info img {
+            width: 80px;
+            height: auto;
+            margin-right: 15px;
+            border-radius: 5px;
+        }
+        .car-details {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .search-box {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .transaction-card {
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s ease-in-out;
+        }
+        .transaction-card:hover {
+            transform: scale(1.02);
+        }
+        .transaction-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .transaction-amount {
+            font-weight: bold;
+            color: #040404;
+        }
+        .month-header {
+            background: #f06321;
+            color: white;
+            padding: 8px 15px;
+            font-weight: bold;
+            font-size: 16px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        @media (max-width: 600px) {
+            .container {
+                width: 95%;
+                padding: 15px;
+            }
+            .search-box {
+                font-size: 14px;
+                padding: 8px;
+            }
+            .car-info {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .car-info img {
+                margin-bottom: 10px;
+            }
+            .car-details {
+                flex-direction: column;
+                text-align: center;
+            }            
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <img src="pngegg.png" alt="ICICI Bank">
+        <div class="top-bar-text">FASTag</div>
+    </div>
+    <div class="container">
+        <p> <span style="font-size: 40px;">DL8CBA5072</span>  Active </p>
+        <div class="car-info">
+            <img src="car.avif" alt="Car Image">
+            <div class="car-details">
+                <p><strong>Car Model:</strong> Kia Seltos</p>
+                <p><strong>Owner:</strong> Anshuman Roy</p>
+                <p><strong>Balance:</strong> ₹1220</p>
+            </div>
+        </div>
+        <input type="text" class="search-box" id="search" placeholder="Search transactions..." onkeyup="filterTransactions()">
+        <div id="transactionList">
+            <div class="month-header">March 2025</div>
+            <div class="transaction-card" onclick="openTransactionDetails('2025-03-28', 'NH-8 Toll', '₹120', 'Success')">
+                <div class="transaction-info">
+                    <p><strong>NH-8 Toll</strong></p>
+                    <p>2025-03-28</p>
+                </div>
+                <div class="transaction-amount">₹120</div>
+            </div>
+            <div class="transaction-card" onclick="openTransactionDetails('2025-03-27', 'NH-48 Toll', '₹90', 'Failed')">
+                <div class="transaction-info">
+                    <p><strong>NH-48 Toll</strong></p>
+                    <p>2025-03-27</p>
+                </div>
+                <div class="transaction-amount">₹90</div>
+            </div>
+            <div class="transaction-card" onclick="openTransactionDetails('2025-03-26', 'NH-1 Toll', '₹75', 'Success')">
+                <div class="transaction-info">
+                    <p><strong>NH-1 Toll</strong></p>
+                    <p>2025-03-26</p>
+                </div>
+                <div class="transaction-amount">₹75</div>
+            </div>
+            <div class="transaction-card" onclick="openTransactionDetails('2025-03-26', 'NH-1 Toll', '₹75', 'Success')">
+                <div class="transaction-info">
+                    <p><strong>NH-1 Toll</strong></p>
+                    <p>2025-03-26</p>
+                </div>
+                <div class="transaction-amount">₹75</div>
+            </div>
+            <div class="transaction-card" onclick="openTransactionDetails('2025-03-26', 'NH-1 Toll', '₹75', 'Success')">
+                <div class="transaction-info">
+                    <p><strong>NH-1 Toll</strong></p>
+                    <p>2025-03-26</p>
+                </div>
+                <div class="transaction-amount">₹75</div>
+            </div>
+            <div class="transaction-card" onclick="openTransactionDetails('2025-03-26', 'NH-1 Toll', '₹75', 'Success')">
+                <div class="transaction-info">
+                    <p><strong>NH-1 Toll</strong></p>
+                    <p>2025-03-26</p>
+                </div>
+                <div class="transaction-amount">₹75</div>
+            </div>
+            <div class="transaction-card" onclick="openTransactionDetails('2025-03-26', 'NH-1 Toll', '₹75', 'Success')">
+                <div class="transaction-info">
+                    <p><strong>NH-1 Toll</strong></p>
+                    <p>2025-03-26</p>
+                </div>
+                <div class="transaction-amount">₹75</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function filterTransactions() {
+            let input = document.getElementById("search").value.toLowerCase();
+            let transactions = document.querySelectorAll(".transaction-card");
+            transactions.forEach(transaction => {
+                transaction.style.display = transaction.innerText.toLowerCase().includes(input) ? "flex" : "none";
+            });
+        }
+
+        function openTransactionDetails(date, plaza, amount, status) {
+            let url = `transaction_details.html?date=${encodeURIComponent(date)}&plaza=${encodeURIComponent(plaza)}&amount=${encodeURIComponent(amount)}&status=${encodeURIComponent(status)}`;
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>
