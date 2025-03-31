@@ -103,6 +103,18 @@
             margin: 15px 0;
             border-radius: 5px;
         }
+        .back-btn {
+            width: 10%;
+            padding: 9px;
+            background: #020202;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
         @media (max-width: 600px) {
             .container {
                 width: 95%;
@@ -133,7 +145,8 @@
         <div class="top-bar-text">FASTag</div>
     </div>
     <div class="container">
-        <p> <span style="font-size: 40px;">DL8CBA5072</span>  Active </p>
+        <button class="back-btn" onclick="back()">Back</button>
+        <p> <span style="font-size: 35px;">DL8CBA5072</span>  Active </p>
         <div class="car-info">
             <img src="car.avif" alt="Car Image">
             <div class="car-details">
@@ -144,55 +157,231 @@
         </div>
         <input type="text" class="search-box" id="search" placeholder="Search transactions..." onkeyup="filterTransactions()">
         <div id="transactionList">
-            <div class="month-header">March 2025</div>
-            <div class="transaction-card" onclick="openTransactionDetails('2025-03-28', 'NH-8 Toll', '₹120', 'Success')">
+            <div class="month-header">October 2024</div>
+            <div class="transaction-card" onclick="openTransactionDetails('2024-10-03', 'Sadahalli', '₹110', 'Success')">
                 <div class="transaction-info">
-                    <p><strong>NH-8 Toll</strong></p>
-                    <p>2025-03-28</p>
+                    <p><strong>Sadahalli</strong></p>
+                    <p>Devanahalli - Bangalore, Karnataka</p>
+                    <p>2024-10-03</p>
                 </div>
-                <div class="transaction-amount">₹120</div>
+                <div class="transaction-amount">₹110</div>
             </div>
-            <div class="transaction-card" onclick="openTransactionDetails('2025-03-27', 'NH-48 Toll', '₹90', 'Failed')">
+            <div class="transaction-card" onclick="openTransactionDetails('2024-10-03', 'Bagepalli', '₹115', 'Success')">
                 <div class="transaction-info">
-                    <p><strong>NH-48 Toll</strong></p>
-                    <p>2025-03-27</p>
+                    <p><strong>Bagepalli</strong></p>
+                    <p>AP/ Karnataka Border - Devanhalli, Karnataka</p>
+                    <p>2024-10-03</p>
+                </div>
+                <div class="transaction-amount">₹115</div>
+            </div>
+            <div class="transaction-card" onclick="openTransactionDetails('2024-10-03', 'Shakhapur', '₹80', 'Success')">
+                <div class="transaction-info">
+                    <p><strong>Shakhapur</strong></p>
+                    <p>Hyderabad Bangalore Section, Andhra Pradesh</p>
+                    <p>2024-10-03</p>
+                </div>
+                <div class="transaction-amount">₹80</div>
+            </div>
+            <div class="transaction-card" onclick="openTransactionDetails('2024-10-03', 'Marur', '₹135', 'Success')">
+                <div class="transaction-info">
+                    <p><strong>Marur</strong></p>
+                    <p>Hyderabad - Bangalore, Andhra Pradesh</p>
+                    <p>2024-10-03</p>
+                </div>
+                <div class="transaction-amount">₹135</div>
+            </div>
+            <div class="transaction-card" onclick="openTransactionDetails('2024-10-03', 'Kasepalli', '₹125', 'Success')">
+                <div class="transaction-info">
+                    <p><strong>Kasepalli</strong></p>
+                    <p>Karidikonda - Marur, Andhra Pradesh</p>
+                    <p>2024-10-03</p>
+                </div>
+                <div class="transaction-amount">₹125</div>
+            </div>
+            <div class="transaction-card" onclick="openTransactionDetails('2024-10-03', 'Amakathadu', '₹130', 'Success')">
+                <div class="transaction-info">
+                    <p><strong>Amakathadu</strong></p>
+                    <p>Hyderabad Bangalore, Andhra Pradesh</p>
+                    <p>2024-10-03</p>
+                </div>
+                <div class="transaction-amount">₹130</div>
+            </div>
+            <div class="transaction-card" onclick="openTransactionDetails('2024-10-03', 'Idalwai', '₹85', 'Success')">
+                <div class="transaction-info">
+                    <p><strong>Idalwai</strong></p>
+                    <p>Nagpur - Hyderabad, Telangana</p>
+                    <p>2024-10-03</p>
+                </div>
+                <div class="transaction-amount">₹85</div>
+            </div>
+            <div class="transaction-card" onclick="openTransactionDetails('2024-10-02', 'Raikal', '₹80', 'Success')">
+                <div class="transaction-info">
+                    <p><strong>Raikal</strong></p>
+                    <p>Thondapali - Jedcherla, Telangana</p>
+                    <p>2024-10-02</p>
+                </div>
+                <div class="transaction-amount">₹80</div>
+            </div>
+            <div class="transaction-card" onclick="openTransactionDetails('2024-10-02', 'Manoharbad', '₹80', 'Success')">
+                <div class="transaction-info">
+                    <p><strong>Manoharbad</strong></p>
+                    <p>Nagpur Hyderabad Section (Chegunta To Bowenpally ), Telangana</p>
+                    <p>2024-10-02</p>
+                </div>
+                <div class="transaction-amount">₹80</div>
+            </div>
+            <div class="transaction-card" onclick="openTransactionDetails('2024-10-02', 'Pippalwada', '₹90', 'Success')">
+                <div class="transaction-info">
+                    <p><strong>Pippalwada</strong></p>
+                    <p>Nagpur Hyderabad Section (Maharashtra Telangana Border To Islamnagar), Telangana</p>
+                    <p>2024-10-02</p>
                 </div>
                 <div class="transaction-amount">₹90</div>
             </div>
-            <div class="transaction-card" onclick="openTransactionDetails('2025-03-26', 'NH-1 Toll', '₹75', 'Success')">
+            <div class="transaction-card" onclick="openTransactionDetails('2024-10-01', 'Kelapur', '₹105', 'Success')">
                 <div class="transaction-info">
-                    <p><strong>NH-1 Toll</strong></p>
-                    <p>2025-03-26</p>
+                    <p><strong>Kelapur</strong></p>
+                    <p>Deodhari - Kelapur (Km. 123.000 to Km. 153.600), Maharashtra</p>
+                    <p>2024-10-01</p>
                 </div>
-                <div class="transaction-amount">₹75</div>
+                <div class="transaction-amount">₹105</div>
             </div>
-            <div class="transaction-card" onclick="openTransactionDetails('2025-03-26', 'NH-1 Toll', '₹75', 'Success')">
+            <div class="transaction-card" onclick="openTransactionDetails('2024-10-01', 'Mansar (Kamptee - Kanhan Bypass)/ Tekadi', '₹160', 'Success')">
                 <div class="transaction-info">
-                    <p><strong>NH-1 Toll</strong></p>
-                    <p>2025-03-26</p>
+                    <p><strong>Mansar (Kamptee - Kanhan Bypass)/ Tekadi</strong></p>
+                    <p>MP/Maharashtra Border - Nagpur Section, Madhya Pradesh</p>
+                    <p>2024-10-01</p>
                 </div>
-                <div class="transaction-amount">₹75</div>
+                <div class="transaction-amount">₹160</div>
             </div>
-            <div class="transaction-card" onclick="openTransactionDetails('2025-03-26', 'NH-1 Toll', '₹75', 'Success')">
+            <div class="transaction-card" onclick="openTransactionDetails('2024-10-01', 'Borkhedi (Nagpur ByPass)', '₹150', 'Success')">
                 <div class="transaction-info">
-                    <p><strong>NH-1 Toll</strong></p>
-                    <p>2025-03-26</p>
+                    <p><strong>Borkhedi (Nagpur ByPass)</strong></p>
+                    <p>MP/Maharashtra Border - Nagpur Section, Madhya Pradesh</p>
+                    <p>2024-10-01</p>
                 </div>
-                <div class="transaction-amount">₹75</div>
+                <div class="transaction-amount">₹150</div>
             </div>
-            <div class="transaction-card" onclick="openTransactionDetails('2025-03-26', 'NH-1 Toll', '₹75', 'Success')">
+            <div class="transaction-card" onclick="openTransactionDetails('2024-10-01', 'Allonia', '₹60', 'Success')">
                 <div class="transaction-info">
-                    <p><strong>NH-1 Toll</strong></p>
-                    <p>2025-03-26</p>
+                    <p><strong>Allonia</strong></p>
+                    <p>Lakhnadon Seoni MP Border, Madhya Pradesh</p>
+                    <p>2024-10-01</p>
                 </div>
-                <div class="transaction-amount">₹75</div>
+                <div class="transaction-amount">₹60</div>
             </div>
-            <div class="transaction-card" onclick="openTransactionDetails('2025-03-26', 'NH-1 Toll', '₹75', 'Success')">
+            <div class="transaction-card" onclick="openTransactionDetails('2024-10-01', 'Malthone', '₹120', 'Success')">
                 <div class="transaction-info">
-                    <p><strong>NH-1 Toll</strong></p>
-                    <p>2025-03-26</p>
+                    <p><strong>Malthone</strong></p>
+                    <p>Lalitpur - Lakhnadon, Madhya Pradesh</p>
+                    <p>2024-10-01</p>
                 </div>
-                <div class="transaction-amount">₹75</div>
+                <div class="transaction-amount">₹120</div>
+            </div>
+            <div class="transaction-card" onclick="openTransactionDetails('2024-10-01', 'Titarpani', '₹110', 'Success')">
+                <div class="transaction-info">
+                    <p><strong>Titarpani</strong></p>
+                    <p>Lalitpur - Lakhnadon, Madhya Pradesh</p>
+                    <p>2024-10-01</p>
+                </div>
+                <div class="transaction-amount">₹110</div>
+            </div>
+            <div class="transaction-card" onclick="openTransactionDetails('2024-10-01', 'Chitora', '₹140', 'Success')">
+                <div class="transaction-info">
+                    <p><strong>Chitora</strong></p>
+                    <p>Lalitpur - Lakhnadon, Madhya Pradesh</p>
+                    <p>2024-10-01</p>
+                </div>
+                <div class="transaction-amount">₹140</div>
+            </div>
+            <div class="month-header">September 2024</div>
+            <div class="transaction-card" onclick="openTransactionDetails('2024-09-30', 'Choundha', '₹85', 'Success')">
+                <div class="transaction-info">
+                    <p><strong>Choundha</strong></p>
+                    <p>Morena, Gwalior, Madhya Pradesh</p>
+                    <p>2024-09-30</p>
+                </div>
+                <div class="transaction-amount">₹85</div>
+            </div>
+            <div class="transaction-card" onclick="openTransactionDetails('2024-09-30', 'Daroda', '₹115', 'Success')">
+                <div class="transaction-info">
+                    <p><strong>Daroda</strong></p>
+                    <p>Borkhedi - Wadner, Madhya Pradesh</p>
+                    <p>2024-09-30</p>
+                </div>
+                <div class="transaction-amount">₹115</div>
+            </div>
+            <div class="transaction-card" onclick="openTransactionDetails('2024-09-30', 'Khawasa - FP', '₹105', 'Success')">
+                <div class="transaction-info">
+                    <p><strong>Khawasa - FP</strong></p>
+                    <p>MOHGAON TO KHAWASA MPMH BORDER, Madhya Pradesh</p>
+                    <p>2024-09-30</p>
+                </div>
+                <div class="transaction-amount">₹105</div>
+            </div>
+            <div class="transaction-card" onclick="openTransactionDetails('2024-09-30', 'Dagrai', '₹140', 'Success')">
+                <div class="transaction-info">
+                    <p><strong>Dagrai</strong></p>
+                    <p>Gwalior Jhansi, Madhya Pradesh</p>
+                    <p>2024-09-30</p>
+                </div>
+                <div class="transaction-amount">₹140</div>
+            </div>
+            <div class="transaction-card" onclick="openTransactionDetails('2024-09-30', 'Gwalior Bypass (Mehra)', '₹95', 'Success')">
+                <div class="transaction-info">
+                    <p><strong>Gwalior Bypass (Mehra)</strong></p>
+                    <p>Gwalior Byepass (Mehra), Madhya Pradesh</p>
+                    <p>2024-09-30</p>
+                </div>
+                <div class="transaction-amount">₹95</div>
+            </div>
+            <div class="transaction-card" onclick="openTransactionDetails('2024-09-29', 'Jajau (Old Baretha)', '₹95', 'Success')">
+                <div class="transaction-info">
+                    <p><strong>Jajau (Old Baretha)</strong></p>
+                    <p>Agra - Dholpur, Madhya Pradesh</p>
+                    <p>2024-09-29</p>
+                </div>
+                <div class="transaction-amount">₹95</div>
+            </div>
+            <div class="transaction-card" onclick="openTransactionDetails('2024-09-29', 'Vighakhet', '₹85', 'Success')">
+                <div class="transaction-info">
+                    <p><strong>Vighakhet</strong></p>
+                    <p>Jhansi - Lalitpur, Uttar Pradesh</p>
+                    <p>2024-09-29</p>
+                </div>
+                <div class="transaction-amount">₹85</div>
+            </div>
+            <div class="transaction-card" onclick="openTransactionDetails('2024-09-29', 'Babina', '₹115', 'Success')">
+                <div class="transaction-info">
+                    <p><strong>Babina</strong></p>
+                    <p>Jhansi - Lalitpur, Uttar Pradesh</p>
+                    <p>2024-09-29</p>
+                </div>
+                <div class="transaction-amount">₹115</div>
+            </div>
+            <div class="transaction-card" onclick="openTransactionDetails('2024-09-29', 'Yamuna Expressway (Aligarh exit)', '₹105', 'Success')">
+                <div class="transaction-info">
+                    <p><strong>Yamuna Expressway (Aligarh exit)</strong></p>
+                    <p>Yamuna Expressway (Aligarh exit), Uttar Pradesh</p>
+                    <p>2024-09-29</p>
+                </div>
+                <div class="transaction-amount">₹105</div>
+            </div>
+            <div class="transaction-card" onclick="openTransactionDetails('2024-09-29', 'Yamuna Expressway (Mathura exit)', '₹135', 'Success')">
+                <div class="transaction-info">
+                    <p><strong>Yamuna Expressway (Mathura exit)</strong></p>
+                    <p>Yamuna Expressway (Mathura exit), Uttar Pradesh</p>
+                    <p>2024-09-29</p>
+                </div>
+                <div class="transaction-amount">₹135</div>
+            </div>
+            <div class="transaction-card" onclick="openTransactionDetails('2024-09-29', 'Yamuna Expressway (Agra exit)', '₹120', 'Success')">
+                <div class="transaction-info">
+                    <p><strong>Yamuna Expressway (Agra exit)</strong></p>
+                    <p>Yamuna Expressway (Agra exit), Uttar Pradesh</p>
+                    <p>2024-09-29</p>
+                </div>
+                <div class="transaction-amount">₹120</div>
             </div>
         </div>
     </div>
@@ -209,6 +398,10 @@
         function openTransactionDetails(date, plaza, amount, status) {
             let url = `transaction_details.html?date=${encodeURIComponent(date)}&plaza=${encodeURIComponent(plaza)}&amount=${encodeURIComponent(amount)}&status=${encodeURIComponent(status)}`;
             window.location.href = url;
+        }
+
+        function back() {
+            window.location.href = "login.html"; // Redirect to FASTag login page
         }
     </script>
 </body>
