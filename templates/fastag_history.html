@@ -166,14 +166,14 @@
 </head>
 <body>
     <div class="top-bar">
-        <img src="pngegg.png" alt="ICICI Bank">
+        <img src="/static/images/pngegg.png" alt="ICICI Bank">
         <div class="top-bar-text">FASTag</div>
     </div>
     <div class="container">
-        <button class="back-btn" onclick="back()">Back</button>
+        <a href="{{ url_for('logout') }}" class="back-btn">Logout</a>
         <p> <span style="font-size: 35px;">DL8CBA5072</span>  Active </p>
         <div class="car-info">
-            <img src="car.avif" alt="Car Image">
+            <img src="/static/images/car.avif" alt="Car Image">
             <div class="car-details">
                 <p><strong>Car Model:</strong> Kia Seltos</p>
                 <p><strong>Owner:</strong> Anshuman Roy</p>
@@ -429,7 +429,20 @@
         }
 
         function openTransactionDetails(date, plaza, amount, status) {
-            let url = `transaction_details.html?date=${encodeURIComponent(date)}&plaza=${encodeURIComponent(plaza)}&amount=${encodeURIComponent(amount)}&status=${encodeURIComponent(status)}`;
+            // Save expanded months
+            const expandedMonths = [];
+            document.querySelectorAll('.month-header').forEach((header, idx) => {
+                if (header.classList.contains('expanded')) {
+                    expandedMonths.push(idx);
+                }
+            });
+            localStorage.setItem('expandedMonths', JSON.stringify(expandedMonths));
+
+            // Save search box value
+            localStorage.setItem('searchValue', document.getElementById('search').value);
+
+            // Navigate to transaction details page
+            let url = `/transaction_details?date=${encodeURIComponent(date)}&plaza=${encodeURIComponent(plaza)}&amount=${encodeURIComponent(amount)}&status=${encodeURIComponent(status)}`;
             window.location.href = url;
         }
 
@@ -455,6 +468,32 @@
                 header.classList.remove('expanded');
             }
         }
+
+        window.onload = function() {
+            // Restore expanded months
+            const expandedMonths = JSON.parse(localStorage.getItem('expandedMonths') || '[]');
+            document.querySelectorAll('.month-header').forEach((header, idx) => {
+                const transactionList = header.nextElementSibling;
+                if (expandedMonths.includes(idx)) {
+                    transactionList.classList.remove('collapsed');
+                    transactionList.classList.add('expanded');
+                    transactionList.style.maxHeight = transactionList.scrollHeight + 'px';
+                    header.classList.add('expanded');
+                }
+            });
+
+            // Restore search box value
+            const searchValue = localStorage.getItem('searchValue') || '';
+            document.getElementById('search').value = searchValue;
+            if (searchValue) filterTransactions();
+        };
+
+        // Clear state on logout
+        document.querySelector('.back-btn').addEventListener('click', function() {
+            localStorage.removeItem('expandedMonths');
+            localStorage.removeItem('searchValue');
+        });
+        
     </script>
 </body>
 </html>

@@ -86,31 +86,19 @@
 <body>
 
     <div class="top-bar">
-        <img src="pngegg.png" alt="ICICI Bank">
+        <img src="/static/images/pngegg.png" alt="ICICI Bank">
         <div class="top-bar-text">FASTag</div>
     </div>
     <div class="container">
         <h2>Transaction Details</h2>
         <div class="details">
-            <p><strong>Date:</strong> <span id="date"></span></p>
-            <p><strong>Toll Plaza:</strong> <span id="plaza"></span></p>
-            <p><strong>Amount:</strong> <span id="amount"></span></p>
-            <p><strong>Status:</strong> <span id="status"></span></p>
+            <p><strong>Date:</strong> {{ date }}</p>
+            <p><strong>Toll Plaza:</strong> {{ plaza }}</p>
+            <p><strong>Amount:</strong> {{ amount }}</p>
+            <p><strong>Status:</strong> {{ status }}</p>
         </div>
-        <a href="fastag_history.html" class="back-button">Back to History</a>
+        <a href="{{ url_for('fastag_history') }}" class="back-button">Back to History</a>
     </div>
-
-    <script>
-        function getQueryParams() {
-            const params = new URLSearchParams(window.location.search);
-            document.getElementById("date").innerText = params.get("date");
-            document.getElementById("plaza").innerText = params.get("plaza");
-            document.getElementById("amount").innerText = params.get("amount");
-            document.getElementById("status").innerText = params.get("status");
-        }
-
-        window.onload = getQueryParams;
-    </script>
 
 </body>
 </html>

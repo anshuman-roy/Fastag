@@ -96,20 +96,21 @@
 </head>
 <body>
     <div class="top-bar">
-        <img src="pngegg.png" alt="ICICI Bank">
+        <img src="/static/images/pngegg.png" alt="ICICI Bank">
         <div class="top-bar-text">FASTag</div>
     </div>
     <div class="login-container">
         <h2>Login to FASTag</h2>
-        <input type="text" class="input-field" placeholder="Enter Username" id="username">
-        <input type="password" class="input-field" placeholder="Enter Password" id="password">
-        <button class="login-btn" onclick="login()">Login</button>
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+        <form method="post">
+            <input type="text" class="input-field" placeholder="Enter Username" name="username"><br>
+            <input type="password" class="input-field" placeholder="Enter Password" name="password"><br>
+            <button class="login-btn" type="submit">Login</button>
+
+        </form>
     </div>
     
-    <script>
-        function login() {
-            window.location.href = "fastag_history.html"; // Redirect to FASTag history page
-        }
-    </script>
 </body>
 </html>

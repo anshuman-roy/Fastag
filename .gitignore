@@ -46,3 +46,10 @@ _testmain.go
 #*.png
 #*.jpeg
 *.psd
+
+# Virtual envs
+venv/
+__pycache__/
+
+# Environment files
+.env
